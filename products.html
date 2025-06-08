@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 Products for {{ keyword }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Top 5 Products for "{{ keyword }}"</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Link</th>
+                <th>LR Positive</th>
+                <th>LR Negative</th>
+                <th>SVM Positive</th>
+                <th>SVM Negative</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in product_data %}
+                <tr>
+                    <td><a href="{{ product.link }}" target="_blank">Product {{ loop.index }}</a></td>
+                    <td>{{ product.lr_positive }}</td>
+                    <td>{{ product.lr_negative }}</td>
+                    <td>{{ product.svm_positive }}</td>
+                    <td>{{ product.svm_negative }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/">Back to Keywords</a>
+</body>
+</html>
